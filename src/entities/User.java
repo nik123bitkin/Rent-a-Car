@@ -17,7 +17,8 @@ public class User {
 
     @Override
     public String toString() {
-        return MessageFormat.format("Name: {1}  Surname: {2}  Id: {3, integer}  OwnedId: {4, integer}",
+        return MessageFormat.format(
+                "Name: {0}  Surname: {1}  Id: {2, number, integer}  OwnedId: {3, number, integer}",
                 name, surname, id, ownedId);
     }
 

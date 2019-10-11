@@ -17,8 +17,9 @@ public class Car {
 
     @Override
     public String toString() {
-        return MessageFormat.format("Model: {1}  Make: {2}  Id: {3, integer}  OwnerId: {4, integer}",
-                                            model, make, id, ownerId);
+        return MessageFormat.format(
+                "Model: {0}  Make: {1}  Id: {2, number, integer}  OwnerId: {3, number, integer}",
+                model, make, id, ownerId);
     }
 
     public Car(String model, String make, int id) {
