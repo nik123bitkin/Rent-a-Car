@@ -5,11 +5,13 @@ import model.Model;
 
 public class Controller {
 
-    private Model model = new Model();
+    private static Model model = new Model();
 
     public static void main(String[] args) {
-        Car c = new Car("bmw", "x5", 1);
-        System.out.println(c);
+        Car car = new Car("bmw", "x5", 1);
+        System.out.println(car);
+        boolean isadded = model.addCar(car);
+        System.out.println(car);
         try {
             System.out.println("Hello world!");
         } catch (Exception e) {

@@ -9,17 +9,6 @@ public class Car {
     private int id;
     private int ownerId;
 
-    @Override
-    public boolean equals(Object obj){
-        if (this == obj){
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        Car it = (Car)obj;
-        return it.id == id;
-    }
 
     public String getModel() {
         return model;
@@ -51,6 +40,18 @@ public class Car {
 
     public void setOwnerId(int ownerId) {
         this.ownerId = ownerId;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj){
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Car it = (Car)obj;
+        return it.id == id;
     }
 
     @Override
