@@ -5,29 +5,35 @@ import entities.User;
 
 public class DBOperator {
     //private String connectionString;
+    private int currentUserID = 1;
+    private int currentCarID = 1;
 
-    public boolean addUser(User user){ //update user id as side effect
-        return true;
+    public int addUser(User user){ //update user id as side effect
+        user.setId(currentUserID);
+        currentUserID++;
+        return 0;
     }
 
-    public boolean removeUser(User user){
-        return true;
+    public int removeUser(Integer id){
+        return 0;
     }
 
-    public boolean updateUser(User user){
-        return true;
+    public int updateUser(User user){
+        return 0;
     }
 
-    public boolean addCar(Car car){ //update car id as side effect
-        return true;
+    public int addCar(Car car){ //update car id as side effect
+        car.setId(currentCarID);
+        currentCarID++;
+        return 0;
     }
 
-    public boolean removeCar(Car car){
-        return true;
+    public int removeCar(Integer id){
+        return 0;
     }
 
-    public boolean updateCar(Car car){
-        return true;
+    public int updateCar(Car car){
+        return 0;
     }
 
     public DBOperator() {}

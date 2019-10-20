@@ -20,12 +20,13 @@ public class Controller {
         while(result != -1) {
             String command = in.nextLine();
             String[] params = parseCommand(command);
-            result = params != null ? commandWrapper.execute(params) : 1;
+            result = params != null ? (params[0].equals("exit") ? -1 : commandWrapper.execute(params)) : 1;
             switch(result){
                 case -1://exit
+                    System.out.println("Programm finished...");
                     break;
                 case 1: //command format error
-                    System.out.println("Invalid command format, see help --any");
+                    System.out.println("Invalid command format, see help --[command]");
                     break;
                 default: //executed
                     break;

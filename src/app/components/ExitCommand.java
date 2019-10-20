@@ -2,12 +2,10 @@ package app.components;
 
 import java.util.ArrayList;
 
-public class HelpCommand extends Command{
+public class ExitCommand extends Command {
     private ArrayList<String> keys = new ArrayList<>(){
         {
-            add("--car");
-            add("--user");
-            add("--exit");
+            add("--all");
         }
     };
 
@@ -18,7 +16,6 @@ public class HelpCommand extends Command{
 
     @Override
     public int execute(String[] args) {
-        System.out.println("Help executed");
-        return 0;
+        return model.clearResources();
     }
 }
