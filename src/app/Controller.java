@@ -28,6 +28,12 @@ public class Controller {
                 case 1: //command format error
                     System.out.println("Invalid command format, see help --[command]");
                     break;
+                case 2:
+                    System.out.println("Storage exception. Operation is not performed");
+                    break;
+                case 3:
+                    System.out.println("Program exception. Operation is not performed");
+                    break;
                 default: //executed
                     break;
             }
