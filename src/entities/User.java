@@ -3,7 +3,7 @@ package entities;
 import java.text.MessageFormat;
 import java.util.Objects;
 
-public class User {
+public class User implements java.io.Serializable {
     private String name;
     private String surname;
     private int id;

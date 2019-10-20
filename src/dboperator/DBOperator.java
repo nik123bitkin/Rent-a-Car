@@ -4,9 +4,9 @@ import entities.Car;
 import entities.User;
 
 public class DBOperator {
-    private String connectionString;
+    //private String connectionString;
 
-    public boolean addUser(User user){
+    public boolean addUser(User user){ //update user id as side effect
         return true;
     }
 
@@ -18,7 +18,7 @@ public class DBOperator {
         return true;
     }
 
-    public boolean addCar(Car car){
+    public boolean addCar(Car car){ //update car id as side effect
         return true;
     }
 

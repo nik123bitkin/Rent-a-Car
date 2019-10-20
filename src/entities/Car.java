@@ -3,7 +3,7 @@ package entities;
 import java.text.MessageFormat;
 import java.util.Objects;
 
-public class Car {
+public class Car implements java.io.Serializable {
     private String model;
     private String make;
     private int id;
