@@ -1,18 +1,62 @@
-package entities; //TODO: maybe base entity? reasons...
+package entities;
 
 import java.text.MessageFormat;
 import java.util.Objects;
 
 public class Car {
-    public String model; // No properties, get/set not necessary bcz of direct access
-    public String make;
-    public int id;
-    public int ownerId = 0; //TODO: default parameter??
+    private String model;
+    private String make;
+    private int id;
+    private int ownerId;
+
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj){
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Car it = (Car)obj;
+        return it.id == id;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(int ownerId) {
+        this.ownerId = ownerId;
+    }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id);
+        return Objects.hash(id + this.toString());
     }
 
     @Override
@@ -22,9 +66,17 @@ public class Car {
                 model, make, id, ownerId);
     }
 
+    public Car(){
+        this.model = "None";
+        this.make = "None";
+        this.id = -1;
+        this.ownerId = -1;
+    }
+
     public Car(String model, String make, int id) {
         this.model = model;
         this.make = make;
         this.id = id;
+        this.ownerId = 0;
     }
 }
