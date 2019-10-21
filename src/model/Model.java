@@ -5,7 +5,6 @@ import entities.Car;
 import entities.User;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -15,14 +14,25 @@ public class Model {
     private ArrayList<User> users;
     private DBOperator dbOperator = new DBOperator();
 
+    /**
+     * @return array list with users
+     */
     public ArrayList<User> getUsers(){
         return users;
     }
 
+    /**
+     * @return array list with cars
+     */
     public ArrayList<Car> getCars(){
         return cars;
     }
 
+    /**
+     * Adding new user to collection
+     * @param user user to be added
+     * @return 0 if successfully, 1 if database error occurred, 2 if such user exists, 3 if collection caused an error
+     */
     public int addUser(User user){
         return !users.contains(user) ?
                 (dbOperator.addUser(user) == 0 ?
@@ -31,12 +41,22 @@ public class Model {
                 : 2;
     }
 
+    /**
+     * This method removes user
+     * @param id id of user to be deleted
+     * @return 0 if successfully, 1 if database error occurred, 3 if such user doesn't exist
+     */
     public int removeUser(Integer id){
         return dbOperator.removeUser(id) == 0 ?
                 (users.remove(new User("","",id)) ? 0 : 3)
-                : 2;
+                : 1;
     }
 
+    /**
+     * @param id id of user to be updated
+     * @param values list of pairs field-value to be updated
+     * @return 0 if successfully, 1 if database error occurred, 3 if collection caused an error
+     */
     public int updateUser(int id, HashMap<String, String> values){
         int i = users.indexOf(new User("", "", id));
         User user = users.get(i);
@@ -56,10 +76,19 @@ public class Model {
         return 0;
     }
 
+    /**
+     * This method sorts users by given comparator
+     * @param comparator comparator to use for sorting
+     */
     public void sortUsers(Comparator<User> comparator){
         users.sort(comparator);
     }
 
+    /**
+     * Adding new car to the collection
+     * @param car car to be added
+     * @return 0 if successfully, 1 if database error occurred, 2 if such user exists, 3 if collection caused an error
+     */
     public int addCar(Car car){
         return !cars.contains(car) ?
                 (dbOperator.addCar(car) == 0 ?
@@ -68,12 +97,22 @@ public class Model {
                 : 2;
     }
 
+    /**
+     * This method removes a car
+     * @param id id of car to be removed
+     * @return 0 if successfully, 1 if database error occurred, 3 if such car doesn't exist
+     */
     public int removeCar(Integer id){
         return dbOperator.removeCar(id) == 0 ?
                 (cars.remove(new Car("","",id)) ? 0 : 3)
                 : 2;
     }
 
+    /**
+     * @param id id of car to be updated
+     * @param values list of pairs field-value to be updated
+     * @return 0 if successfully, 1 if database error occurred, 3 if collection caused an error
+     */
     public int updateCar(int id, HashMap<String, String> values){
         int i = cars.indexOf(new Car("", "", id));
         Car car = cars.get(i);
@@ -93,10 +132,17 @@ public class Model {
         return 0;
     }
 
+    /**
+     * This method sorts cars by given comparator
+     * @param comparator comparator to use for sorting
+     */
     public void sortCars(Comparator<Car> comparator){
         cars.sort(comparator);
     }
 
+    /**
+     * @return -1 if exit allowed, 4 if error occurred during data storing
+     */
     public int clearResources(){
         try {
             dbOperator.serialize(users, cars);
@@ -106,11 +152,18 @@ public class Model {
         return -1;
     }
 
+    /**
+     * @return object hash code
+     */
     @Override
     public int hashCode() {
         return cars.hashCode() | users.hashCode()| dbOperator.hashCode();
     }
 
+    /**
+     * @param obj Object to compare
+     * @return equality
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj){
@@ -122,11 +175,17 @@ public class Model {
         return super.equals(obj);
     }
 
+    /**
+     * @return string representation of object
+     */
     @Override
     public String toString() {
         return "RentACar model" + this.hashCode();
     }
 
+    /**
+     * Constructor that creates an object and retrieves lists of users and cars from storage
+     */
     public Model(){
         try {
             Object [] data = dbOperator.deserializeUsers();

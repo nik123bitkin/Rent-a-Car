@@ -3,6 +3,9 @@ package entities;
 import java.text.MessageFormat;
 import java.util.Objects;
 
+/**
+ * Entity of user who can rent a car
+ */
 public class User implements java.io.Serializable {
     private String name;
     private String surname;
@@ -66,6 +69,10 @@ public class User implements java.io.Serializable {
                 name, surname, id, ownership);
     }
 
+    /**
+     * Default Java bean constructor
+     * @deprecated
+     */
     public User(){
         this.name = "None";
         this.surname = "None";
@@ -73,9 +80,15 @@ public class User implements java.io.Serializable {
         this.ownership = -1;
     }
 
-    public User(String model, String make, int id) {
-        this.name = model;
-        this.surname = make;
+    /**
+     * Constructs user object based on name and surname.
+     * @param name user name
+     * @param surname user surname
+     * @param id user id
+     */
+    public User(String name, String surname, int id) {
+        this.name = name;
+        this.surname = surname;
         this.id = id;
         this.ownership = 0;
     }

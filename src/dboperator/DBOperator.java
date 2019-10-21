@@ -10,9 +10,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Class that process data storing-retrieving operations
+ */
 public class DBOperator {
     private final String usersPath = "C:\\Files\\Projects\\users.xml";
-    private final String carsPath = "C:\\Files\\Projects\\cars.xml";
+    //private final String carsPath = "C:\\Files\\Projects\\cars.xml";
     private int currentUserID = 1;
     private int currentCarID = 1;
 
@@ -44,6 +47,13 @@ public class DBOperator {
         return 0;
     }
 
+    /**
+     * This method serializes users and cars into xml-file
+     * @param users array list of users
+     * @param cars array list of cars
+     * @throws IOException when file error occurred
+     * @see IOException
+     */
     public void serialize(ArrayList<User> users, ArrayList<Car> cars) throws IOException {//TODO: remove exception
         try(FileOutputStream fos = new FileOutputStream(usersPath);
             XMLEncoder encoder = new XMLEncoder(fos)) {
@@ -53,6 +63,11 @@ public class DBOperator {
         }
     }
 
+    /**
+     * This method deserializes xml-file into two array lists
+     * @return array of two array lists as Objects, [0] is users, [1] is cars. null appears if reading error occurred
+     * @throws IOException
+     */
     public Object[] deserializeUsers() throws IOException {
         try(FileInputStream fis = new FileInputStream(usersPath);
             XMLDecoder decoder = new XMLDecoder(fis)){

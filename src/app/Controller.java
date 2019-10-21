@@ -7,6 +7,11 @@ import java.util.Scanner;
 public class Controller {
     private static CommandWrapper commandWrapper = new CommandWrapper();
 
+    /**
+     * First level validation method
+     * @param command string entered by user
+     * @return array with command, key and values or null, if format is incorrect
+     */
     private static String[] parseCommand(String command){
         String[] temp = command.split(" ");
         return temp.length > 1
@@ -14,6 +19,10 @@ public class Controller {
                 && commandWrapper.hasKey(temp[0], temp[1]) ? temp : null;
     }
 
+    /**
+     * Entry point of program
+     * @param args command line arguments (unused)
+     */
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int result = 0;

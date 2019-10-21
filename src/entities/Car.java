@@ -3,6 +3,9 @@ package entities;
 import java.text.MessageFormat;
 import java.util.Objects;
 
+/**
+ * Entity of car that can be rented
+ */
 public class Car implements java.io.Serializable {
     private String model;
     private String make;
@@ -60,6 +63,9 @@ public class Car implements java.io.Serializable {
         return Objects.hash(id + this.toString());
     }
 
+    /**
+     * @return string representation of object
+     */
     @Override
     public String toString() {
         return MessageFormat.format(
@@ -67,6 +73,10 @@ public class Car implements java.io.Serializable {
                 model, make, id, ownerId);
     }
 
+    /**
+     * Java bean default constructor
+     * @deprecated
+     */
     public Car(){
         this.model = "None";
         this.make = "None";
@@ -74,6 +84,12 @@ public class Car implements java.io.Serializable {
         this.ownerId = -1;
     }
 
+    /**
+     * Constructs car object based on model and make.
+     * @param model car model
+     * @param make car make
+     * @param id car id
+     */
     public Car(String model, String make, int id) {
         this.model = model;
         this.make = make;
