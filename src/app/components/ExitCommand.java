@@ -16,6 +16,10 @@ public class ExitCommand extends Command {
 
     @Override
     public int execute(String[] args) {
-        return model.clearResources();
+        int result =  model.clearResources();
+        if(result == 4){
+            CommandWrapper.DisplayMessage(new StringBuilder("File error occured during serialization"));
+        }
+        return -1;
     }
 }

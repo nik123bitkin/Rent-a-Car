@@ -4,14 +4,15 @@ import dboperator.DBOperator;
 import entities.Car;
 import entities.User;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 
 public class Model {
-    private ArrayList<Car> cars = new ArrayList<>();
-    private ArrayList<User> users = new ArrayList<>();
+    private ArrayList<Car> cars;
+    private ArrayList<User> users;
     private DBOperator dbOperator = new DBOperator();
 
     public ArrayList<User> getUsers(){
@@ -99,8 +100,8 @@ public class Model {
     public int clearResources(){
         try {
             dbOperator.serialize(users, cars);
-        }catch(Exception e){
-
+        }catch(IOException e){
+            return 4;
         }
         return -1;
     }
@@ -129,10 +130,8 @@ public class Model {
     public Model(){
         try {
             Object [] data = dbOperator.deserializeUsers();
-            users = (ArrayList<User>)data[0];//TODO: remove unchecked cast
-            cars = (ArrayList<Car>)data[1];
-        }catch(Exception e){
-
-        }
+            users = data[0] == null ? new ArrayList<>() : (ArrayList<User>)data[0];
+            cars = data[0] == null ? new ArrayList<>() : (ArrayList<Car>)data[1];
+        }catch(Exception ignored){}
     }
 }

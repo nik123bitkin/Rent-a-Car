@@ -45,24 +45,24 @@ public class DBOperator {
     }
 
     public void serialize(ArrayList<User> users, ArrayList<Car> cars) throws IOException {//TODO: remove exception
-        FileOutputStream fos = new FileOutputStream(usersPath);
-        XMLEncoder encoder = new XMLEncoder(fos);
-        encoder.setExceptionListener(e -> System.out.println("Exception! :" + e.toString()));
-        encoder.writeObject(users);
-        encoder.writeObject(cars);
-        encoder.close();
-        fos.close();
+        try(FileOutputStream fos = new FileOutputStream(usersPath);
+            XMLEncoder encoder = new XMLEncoder(fos)) {
+            encoder.setExceptionListener(e -> System.out.println("Exception! :" + e.toString()));
+            encoder.writeObject(users);
+            encoder.writeObject(cars);
+        }
     }
 
-    public Object[] deserializeUsers() throws IOException {//TODO: remove exception
-        FileInputStream fis = new FileInputStream(usersPath);
-        XMLDecoder decoder = new XMLDecoder(fis);
-        decoder.setExceptionListener(e -> System.out.println("Exception! :" + e.toString()));
-        ArrayList<User> users = (ArrayList<User>)decoder.readObject(); //TODO: check cast
-        ArrayList<Car> cars = (ArrayList<Car>)decoder.readObject(); //TODO: check cast
-        decoder.close();
-        fis.close();
-        return new Object[]{users, cars};
+    public Object[] deserializeUsers() throws IOException {
+        try(FileInputStream fis = new FileInputStream(usersPath);
+            XMLDecoder decoder = new XMLDecoder(fis)){
+            decoder.setExceptionListener(e -> System.out.println("Exception! :" + e.toString()));
+            Object us = decoder.readObject();
+            Object cr = decoder.readObject();
+            ArrayList<User> users = us instanceof ArrayList ? (ArrayList<User>)us : null;
+            ArrayList<Car> cars = cr instanceof ArrayList ? (ArrayList<Car>)cr : null;
+            return new Object[]{users, cars};
+        }
     }
 
     public DBOperator() {}
