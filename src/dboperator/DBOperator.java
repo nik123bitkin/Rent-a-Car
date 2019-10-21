@@ -3,8 +3,16 @@ package dboperator;
 import entities.Car;
 import entities.User;
 
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class DBOperator {
-    //private String connectionString;
+    private final String usersPath = "C:\\Files\\Projects\\users.xml";
+    private final String carsPath = "C:\\Files\\Projects\\cars.xml";
     private int currentUserID = 1;
     private int currentCarID = 1;
 
@@ -34,6 +42,27 @@ public class DBOperator {
 
     public int updateCar(Car car){
         return 0;
+    }
+
+    public void serialize(ArrayList<User> users, ArrayList<Car> cars) throws IOException {//TODO: remove exception
+        FileOutputStream fos = new FileOutputStream(usersPath);
+        XMLEncoder encoder = new XMLEncoder(fos);
+        encoder.setExceptionListener(e -> System.out.println("Exception! :" + e.toString()));
+        encoder.writeObject(users);
+        encoder.writeObject(cars);
+        encoder.close();
+        fos.close();
+    }
+
+    public Object[] deserializeUsers() throws IOException {//TODO: remove exception
+        FileInputStream fis = new FileInputStream(usersPath);
+        XMLDecoder decoder = new XMLDecoder(fis);
+        decoder.setExceptionListener(e -> System.out.println("Exception! :" + e.toString()));
+        ArrayList<User> users = (ArrayList<User>)decoder.readObject(); //TODO: check cast
+        ArrayList<Car> cars = (ArrayList<Car>)decoder.readObject(); //TODO: check cast
+        decoder.close();
+        fis.close();
+        return new Object[]{users, cars};
     }
 
     public DBOperator() {}

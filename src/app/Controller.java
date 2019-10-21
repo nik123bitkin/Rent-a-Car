@@ -20,7 +20,7 @@ public class Controller {
         while(result != -1) {
             String command = in.nextLine();
             String[] params = parseCommand(command);
-            result = params != null ? (params[0].equals("exit") ? -1 : commandWrapper.execute(params)) : 1;
+            result = params != null ? commandWrapper.execute(params) : 1;
             switch(result){
                 case -1://exit
                     System.out.println("Programm finished...");

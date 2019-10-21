@@ -4,6 +4,7 @@ import dboperator.DBOperator;
 import entities.Car;
 import entities.User;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -96,7 +97,12 @@ public class Model {
     }
 
     public int clearResources(){
-        return 0;
+        try {
+            dbOperator.serialize(users, cars);
+        }catch(Exception e){
+
+        }
+        return -1;
     }
 
     @Override
@@ -120,5 +126,13 @@ public class Model {
         return "RentACar model" + this.hashCode();
     }
 
-    public Model(){}
+    public Model(){
+        try {
+            Object [] data = dbOperator.deserializeUsers();
+            users = (ArrayList<User>)data[0];//TODO: remove unchecked cast
+            cars = (ArrayList<Car>)data[1];
+        }catch(Exception e){
+
+        }
+    }
 }
