@@ -16,4 +16,8 @@ public abstract class Command implements ICommand {
     public int execute(String[] args) {
         return 0;
     }
+
+    public Command(){
+        model.Init();
+    }
 }

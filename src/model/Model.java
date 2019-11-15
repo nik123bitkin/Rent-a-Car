@@ -1,16 +1,24 @@
 package model;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.*;
 import dboperator.DBOperator;
 import entities.Car;
 import entities.User;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 
-public class Model {
+@JacksonXmlRootElement(localName = "model")
+public class Model implements Serializable {
+    @JacksonXmlElementWrapper(localName = "cars")
+    @JacksonXmlProperty(localName = "car")
     private ArrayList<Car> cars;
+
+    @JacksonXmlElementWrapper(localName = "users")
+    @JacksonXmlProperty(localName = "user")
     private ArrayList<User> users;
     private DBOperator dbOperator = new DBOperator();
 
@@ -145,8 +153,8 @@ public class Model {
      */
     public int clearResources(){
         try {
-            dbOperator.serialize(users, cars);
-        }catch(IOException e){
+            dbOperator.serialize(this);
+        }catch(Exception e){
             return 4;
         }
         return -1;
@@ -187,10 +195,16 @@ public class Model {
      * Constructor that creates an object and retrieves lists of users and cars from storage
      */
     public Model(){
+    }
+
+    public void Init(){
         try {
-            Object [] data = dbOperator.deserializeUsers();
-            users = data[0] == null ? new ArrayList<>() : (ArrayList<User>)data[0];
-            cars = data[0] == null ? new ArrayList<>() : (ArrayList<Car>)data[1];
-        }catch(Exception ignored){}
+            Model m = dbOperator.deserializeModel();
+            users = m.getUsers();
+            cars = m.getCars();
+        }catch(Exception ex){
+            users = new ArrayList<>();
+            cars = new ArrayList<>();
+        };
     }
 }

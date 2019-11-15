@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 
 public class UserCommand extends Command {
-    private ArrayList<String> keys = new ArrayList<>(){
+    private ArrayList<String> keys = new ArrayList<String>(){
         {
             add("--add");
             add("--remove");
@@ -47,7 +47,7 @@ public class UserCommand extends Command {
     private int list(){
         ArrayList<User> users = model.getUsers();
         StringBuilder message = new StringBuilder();
-        for(var user: users){
+        for(User user: users){
             message.append(user.toString());
             message.append("\n");
         }

@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 
 public class CarCommand extends Command {
-    private ArrayList<String> keys = new ArrayList<>(){
+    private ArrayList<String> keys = new ArrayList<String>(){
         {
             add("--add");
             add("--remove");
@@ -47,7 +47,7 @@ public class CarCommand extends Command {
     private int list(){
         ArrayList<Car> cars = model.getCars();
         StringBuilder message = new StringBuilder();
-        for(var car: cars){
+        for(Car car: cars){
             message.append(car.toString());
             message.append("\n");
         }

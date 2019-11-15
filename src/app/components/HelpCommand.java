@@ -3,10 +3,11 @@ package app.components;
 import java.util.ArrayList;
 
 public class HelpCommand extends Command {
-    private ArrayList<String> keys = new ArrayList<>() {
+    private ArrayList<String> keys = new ArrayList<String>() {
         {
             add("--car");
             add("--user");
+            add("--all");
             add("--exit");
         }
     };
@@ -43,6 +44,12 @@ public class HelpCommand extends Command {
                 CommandWrapper.DisplayMessage(
                         new StringBuilder(
                                 "exit:\n\t --all - close program and clear resources"
+                        ));
+                break;
+            case "--all":
+                CommandWrapper.DisplayMessage(
+                        new StringBuilder(
+                                "see --user or --car"
                         ));
                 break;
         }

@@ -1,5 +1,6 @@
 package app.components;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -10,11 +11,7 @@ public class CommandWrapper{
     private final CarCommand carCommand = new CarCommand();
     private final HelpCommand helpCommand = new HelpCommand();
     private final ExitCommand exitCommand = new ExitCommand();
-    private final Map<String, ICommand> commands = Map.of(
-            "user", userCommand,
-            "car", carCommand,
-            "help", helpCommand,
-            "exit", exitCommand);
+    private Map<String, ICommand> commands;
 
     /**
      * Method tests the availability of command
@@ -55,7 +52,13 @@ public class CommandWrapper{
     /**
      * Creates an instance of CommandWrapper class
      */
-    public CommandWrapper(){}
+    public CommandWrapper(){
+        commands = new HashMap<>();
+        commands.put("user", userCommand);
+        commands.put("car", carCommand);
+        commands.put("help", helpCommand);
+        commands.put("exit", exitCommand);
+    }
 
     /**
      * Class of additional auxiliary tools

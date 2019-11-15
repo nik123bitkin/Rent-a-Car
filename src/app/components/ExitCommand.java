@@ -3,7 +3,7 @@ package app.components;
 import java.util.ArrayList;
 
 public class ExitCommand extends Command {
-    private ArrayList<String> keys = new ArrayList<>(){
+    private ArrayList<String> keys = new ArrayList<String>(){
         {
             add("--all");
         }
