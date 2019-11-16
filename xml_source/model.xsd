@@ -3,22 +3,6 @@
     <xsd:element name="model">
         <xsd:complexType>
             <xsd:sequence>
-                <xsd:element name="users">
-                    <xsd:complexType>
-                        <xsd:sequence>
-                            <xsd:element name="user" maxOccurs="unbounded">
-                                <xsd:complexType>
-                                    <xsd:sequence>
-                                        <xsd:element name="name" type="xsd:string"/>
-                                        <xsd:element name="surname" type="xsd:string"/>
-                                        <xsd:element name="id" type="xsd:int"/>
-                                        <xsd:element name="ownership" type="xsd:int"/>
-                                    </xsd:sequence>
-                                </xsd:complexType>
-                            </xsd:element>
-                        </xsd:sequence>
-                    </xsd:complexType>
-                </xsd:element>
                 <xsd:element name="cars">
                     <xsd:complexType>
                         <xsd:sequence>
@@ -29,6 +13,22 @@
                                         <xsd:element name="make" type="xsd:string"/>
                                         <xsd:element name="id" type="xsd:int"/>
                                         <xsd:element name="ownerId" type="xsd:int"/>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="users">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="user" maxOccurs="unbounded">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="name" type="xsd:string"/>
+                                        <xsd:element name="surname" type="xsd:string"/>
+                                        <xsd:element name="id" type="xsd:int"/>
+                                        <xsd:element name="ownership" type="xsd:int"/>
                                     </xsd:sequence>
                                 </xsd:complexType>
                             </xsd:element>

@@ -1,6 +1,7 @@
 package app;
 
 import app.components.CommandWrapper;
+import migrator.Migrator;
 
 import java.util.Scanner;
 
@@ -24,6 +25,8 @@ public class Controller {
      * @param args command line arguments (unused)
      */
     public static void main(String[] args) {
+        Migrator mg = new Migrator();
+        mg.validate();
         Scanner in = new Scanner(System.in);
         int result = 0;
         while(result != -1) {

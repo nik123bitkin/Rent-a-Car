@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-11-16T13:47:37.450184500Z</date>
+  <millis>1573912057450</millis>
+  <nanos>184500</nanos>
+  <sequence>0</sequence>
+  <logger>migrator.Migrator</logger>
+  <level>INFO</level>
+  <class>migrator.Migrator</class>
+  <method>validate</method>
+  <thread>1</thread>
+  <message>Validated</message>
+</record>
