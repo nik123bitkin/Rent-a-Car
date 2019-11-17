@@ -23,14 +23,6 @@ public class Car extends Entity implements java.io.Serializable {
         this.make = make;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     @Override
     public boolean equals(Object obj){
         if (this == obj){

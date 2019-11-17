@@ -4,6 +4,7 @@ import entities.Car;
 import entities.Order;
 import entities.User;
 import model.Model;
+import services.DBOperator;
 import services.XmlParser;
 
 public class Controller {
@@ -20,6 +21,10 @@ public class Controller {
 
         if(xmlParser.validate()) {
             model = xmlParser.loadModel();
+            DBOperator dbOperator = new DBOperator();
+            if(dbOperator.connect()){
+                dbOperator.migrate(model);
+            }
             System.out.println("Success");
         }else{
             System.out.println("Error");

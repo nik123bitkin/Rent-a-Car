@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2019-11-17T09:40:07.565813900Z</date>
-  <millis>1573983607565</millis>
-  <nanos>813900</nanos>
+  <date>2019-11-17T15:56:40.228726Z</date>
+  <millis>1574006200228</millis>
+  <nanos>726000</nanos>
   <sequence>0</sequence>
   <logger>services.XmlParser</logger>
   <level>INFO</level>

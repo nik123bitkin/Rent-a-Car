@@ -22,9 +22,9 @@ import static java.util.logging.Level.ALL;
 import static java.util.logging.Level.SEVERE;
 
 public class XmlParser {
-    private final String XML_SOURCE = "C:\\Files\\Projects\\Java\\Lab2\\xml_source\\model.xml";
-    private final String XSD_SOURCE = "C:\\Files\\Projects\\Java\\Lab2\\xml_source\\model.xsd";
-    private final String LOG_SOURCE = "C:\\Files\\Projects\\Java\\Lab2\\xml_source\\log.txt";
+    private final String XML_SOURCE = "/home/beetoss/Projects/Lab2/xml_source/model.xml";
+    private final String XSD_SOURCE = "/home/beetoss/Projects/Lab2/xml_source/model.xsd";
+    private final String LOG_SOURCE = "/home/beetoss/Projects/Lab2/xml_source/log.txt";
 
     private final Logger logger = Logger.getLogger(XmlParser.class.getName());
 
@@ -40,6 +40,8 @@ public class XmlParser {
     public Model loadModel(){
         try {
             XmlMapper xmlMapper = new XmlMapper();
+            xmlMapper.registerModule(new JavaTimeModule());
+            xmlMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
             String xmlText = new String(Files.readAllBytes(Paths.get(XML_SOURCE)));
             return xmlMapper.readValue(xmlText, Model.class);
         }catch(IOException ex){
