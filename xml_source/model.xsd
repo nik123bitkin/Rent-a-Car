@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="model">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="cars">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="car" maxOccurs="unbounded">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="model" type="xsd:string"/>
+                                        <xsd:element name="make" type="xsd:string"/>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="id" type="xsd:int"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="users">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="user" maxOccurs="unbounded">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="name" type="xsd:string"/>
+                                        <xsd:element name="surname" type="xsd:string"/>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="id" type="xsd:int"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="orders">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="order" maxOccurs="unbounded">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="userId" type="xsd:int"/>
+                                        <xsd:element name="carId" type="xsd:int"/>
+                                        <xsd:element name="startDate" type="xsd:dateTime"/>
+                                        <xsd:element name="endDate" type="xsd:dateTime"/>
+                                        <xsd:element name="status" type="xsd:string"/>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="id" type="xsd:int"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

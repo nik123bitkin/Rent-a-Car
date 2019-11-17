@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-11-17T09:40:07.565813900Z</date>
+  <millis>1573983607565</millis>
+  <nanos>813900</nanos>
+  <sequence>0</sequence>
+  <logger>services.XmlParser</logger>
+  <level>INFO</level>
+  <class>services.XmlParser</class>
+  <method>validate</method>
+  <thread>1</thread>
+  <message>Validated</message>
+</record>
+</log>
