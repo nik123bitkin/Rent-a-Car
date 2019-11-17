@@ -43,6 +43,7 @@ public class XmlParser {
             String xmlText = new String(Files.readAllBytes(Paths.get(XML_SOURCE)));
             return xmlMapper.readValue(xmlText, Model.class);
         }catch(IOException ex){
+            logger.log(SEVERE, "IOException occured");
             return null;
         }
     }
