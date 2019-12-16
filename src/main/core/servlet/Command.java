@@ -5,7 +5,7 @@ import main.core.model.Model;
 import javax.servlet.http.HttpServletRequest;
 
 public class Command {
-    //static private final String mainUrl = "/pages/users.jsp";
+    static private final String mainUrl = "index.jsp";
     static private final String usersUrl = "/pages/users.jsp";
     static private final String carsUrl = "/pages/cars.jsp";
     static private final String ordersUrl = "/pages/orders.jsp";
@@ -15,6 +15,7 @@ public class Command {
     static private int capacity;
     static private int internalCount;
     static private String url;
+    static private String currentPage;
 
     static public String execute(HttpServletRequest request, String target){
         page = Integer.valueOf(request.getParameter("page"));
@@ -29,12 +30,17 @@ public class Command {
             case "orders":
                 executeOrders(request);
                 break;
+            case "index":
+                url = mainUrl;
+                break;
         }
+        currentPage = target;
         int count = internalCount / capacity + (internalCount % capacity);
 
         request.setAttribute("count", count);
         request.setAttribute("page", page);
         request.setAttribute("capacity", capacity);
+        request.setAttribute("currentPage", currentPage);
 
         return url;
     }

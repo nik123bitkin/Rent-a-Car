@@ -2,16 +2,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Users</title>
+    <title>Cars</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 <table>
-    <c:forEach items="${users}" var="user">
+    <c:forEach items="${cars}" var="car">
         <tr>
-            <td><c:out value="${user.id}"/></td>
-            <td><c:out value="${user.name}"/></td>
-            <td><c:out value="${user.surname}"/></td>
+            <td><c:out value="${car.id}"/></td>
+            <td><c:out value="${car.model}"/></td>
+            <td><c:out value="${car.make}"/></td>
         </tr>
     </c:forEach>
 </table>

@@ -24,9 +24,9 @@
         </user>
     </users>
     <orders>
-        <order id="0">
-            <userId>0</userId>
-            <carId>0</carId>
+        <order id="1">
+            <userId>1</userId>
+            <carId>1</carId>
             <startDate>2000-01-02T02:30:00</startDate>
             <endDate>2000-01-03T05:30:00</endDate>
             <status>PLACED</status>
