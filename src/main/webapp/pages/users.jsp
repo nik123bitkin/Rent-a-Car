@@ -17,36 +17,12 @@
     <c:forEach items="${users}" var="user">
         <tr>
             <td><c:out value="${user.id}"/></td>
-            <td> ${user.name}</td>
-            <td> ${user.surname}</td>
+            <td><c:out value="${user.name}"/></td>
+            <td><c:out value="${user.surname}"/></td>
         </tr>
     </c:forEach>
 </table>
 <nav>
-    <ul>
-        <c:if test="${page != 1}">
-            <li>
-                <a href="${pageContext.request.contextPath}/controller?command=users&capacity=${capacity}&page=${page-1}">Previous</a>
-            </li>
-        </c:if>
-
-        <c:forEach begin="1" end="${count}" var="i">
-            <c:choose>
-                <c:when test="${page eq i}">
-                    <li><a>${i} <span>(current)</span></a></li>
-                </c:when>
-                <c:otherwise>
-                    <li><a href="${pageContext.request.contextPath}/controller?command=users&capacity=${capacity}&page=${i}">${i}</a>
-                    </li>
-                </c:otherwise>
-            </c:choose>
-        </c:forEach>
-
-        <c:if test="${page lt count}">
-            <li><a href="${pageContext.request.contextPath}/controller?command=users&capacity=${capacity}&page=${page+1}">Next</a>
-            </li>
-        </c:if>
-    </ul>
 </nav>
 </body>
 </html>
